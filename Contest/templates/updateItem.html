@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+        background-color: white;
+        height: 500px;
+        width: 300px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    body{
+        background-color: skyblue;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    </style>
+</head>
+<body>
+    <div id = 'container'>
+        <div id = 'formContainer'>
+            <form method="POST">
+                {% csrf_token %}
+                {{updateform.contestName}}
+                <button id = 'add' type = 'submit'> Update </button>
+            </form>
+            </div>
+            </div>
+</body>
+</html>

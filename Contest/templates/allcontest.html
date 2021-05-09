@@ -1,0 +1,117 @@
+<!-- <form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type = 'submit'> Submit </button>
+</form>
+{% for contest in contestre %}
+<p> {{contest.contestName}}  </p>
+<a href = "{% url 'updateItem' contest.id %}" > <button> Update </button> </a>
+<a href = "{% url 'deleteItem' contest.id %}" > <button> Delete </button> </a>
+{% endfor %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0px;
+        margin:0px;
+        box-sizing: border-box;
+        font-family: "Times New Roman";
+    }
+    body{
+        background-color: blueviolet;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #container{
+        background-color: white;
+        height: 700px;
+        width: 500px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    #add{
+        width: 50px;
+        height: 40px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #Contests{
+        width: 250px;
+        height: 250px;
+        overflow: auto;
+
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #name{
+        Width :250px
+    }
+    .item{
+        width: 250px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .edit, .delete{
+        height: 35px;
+        width:60px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    #ContestName{
+        align-items: left;
+        padding: 5px;
+    }
+    .edit{
+        background-color: green;
+    }
+    .delete{
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id = 'container'>
+        <div id = 'formContainer'>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.contestName}}
+                <button id = 'add' type = 'submit'>New Contest</button>
+            </form>
+        </div>
+        <div id = 'name'>
+            <p > Contest Name </p>
+        </div>
+        <br>
+        <div id = 'Contests'>
+            {% for contest in contestre %}
+                <div class = 'item'>
+                    <p>{{contest.contestName}}    </p>
+                    <div class = 'controls'>
+                        <a href = "{% url 'updateItem' contest.id %}"><button class = 'edit'>Change</button></a>
+                        <a href = "{% url 'deleteItem' contest.id %}"><button class = 'delete'>Given</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
