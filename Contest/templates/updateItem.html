@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Contest</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <style>
-        #container{
-        background-color: white;
-        height: 500px;
-        width: 300px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-    }
-    body{
-        background-color: skyblue;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        *{
+            padding: 2px;
+        }
+        body{
+            background-color: #7aceeb;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
     </style>
 </head>
 <body>
-    <div id = 'container'>
-        <div id = 'formContainer'>
+            <script src="{% static 'js/jquery.js' %}"></script>
+            <script src="{% static 'js/popper.js' %}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>
+            <div align = 'center'>
+                <img src = "{% static 'css/cover.png' %}" class="img-fluid" style = "width: 500px">
+            </div>
             <form method="POST">
                 {% csrf_token %}
-                {{updateform.contestName}}
-                <button id = 'add' type = 'submit'> Update </button>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Select Platform
+                        </div>
+                <div class="col-6">
+                            {{updateform.platform}}
+                </div>
+
+
+                <br>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Name
+                        </div>
+                <div class="col-6">
+                            {{updateform.contestName}}
+                </div>
+                <br>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Link
+                        </div>
+                <div class="col-6">
+                            {{updateform.contestLink}}
+                </div>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Date and Time <i> (YYYY-MM-DD HH:MM) </i>
+                        </div>
+                <div class="col-6">
+                            {{updateform.dateTime}}
+                </div>
+                <figure class="text-center">
+                <button id = 'add' type="submit" class="btn btn-success">Update</button>
+                </figure>
             </form>
-            </div>
-            </div>
+
 </body>
 </html>
