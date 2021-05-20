@@ -1,117 +1,93 @@
-<!-- <form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type = 'submit'> Submit </button>
-</form>
-{% for contest in contestre %}
-<p> {{contest.contestName}}  </p>
-<a href = "{% url 'updateItem' contest.id %}" > <button> Update </button> </a>
-<a href = "{% url 'deleteItem' contest.id %}" > <button> Delete </button> </a>
-{% endfor %} -->
-
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contest Helper</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <style>
-    *{
-        padding: 0px;
-        margin:0px;
-        box-sizing: border-box;
-        font-family: "Times New Roman";
-    }
-    body{
-        background-color: blueviolet;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #container{
-        background-color: white;
-        height: 700px;
-        width: 500px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-    }
-
-    #add{
-        width: 50px;
-        height: 40px;
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    #Contests{
-        width: 250px;
-        height: 250px;
-        overflow: auto;
-
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    #name{
-        Width :250px
-    }
-    .item{
-        width: 250px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .edit, .delete{
-        height: 35px;
-        width:60px;
-        border: none;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    #ContestName{
-        align-items: left;
-        padding: 5px;
-    }
-    .edit{
-        background-color: green;
-    }
-    .delete{
-        background-color: red;
+        *{
+            padding: 2px;
+        }
+        body{
+            background-color: #ADB7BF;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
     }
     </style>
 </head>
 <body>
-    <div id = 'container'>
-        <div id = 'formContainer'>
+<div align = 'center'>
+    <img src = "{% static 'css/cover.png' %}" class="img-fluid" style = "width: 500px">
+</div>
+
+<div class="d-inline-flex p-2 bd-highlight" align = 'center'>
             <form method="POST">
                 {% csrf_token %}
-                {{form.contestName}}
-                <button id = 'add' type = 'submit'>New Contest</button>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Select Platform
+                        </div>
+                <div class="col-6">
+                            {{form.platform}}
+                </div>
+
+
+                <br>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Name
+                        </div>
+                <div class="col-6">
+                            {{form.contestName}}
+                </div>
+                <br>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Link
+                        </div>
+                <div class="col-6">
+                            {{form.contestLink}}
+                </div>
+                <div class="row g-2">
+                        <div class="col-6">
+                            Contest Date and Time <i> (YYYY-MM-DD HH:MM) </i>
+                        </div>
+                <div class="col-6">
+                            {{form.dateTime}}
+                </div>
+                    <br>
+                    <br>
+
+                        <figure class="text-center">
+                <button id = 'add' type="submit" class="btn btn-success">New Contest</button>
+                            </figure>
             </form>
-        </div>
-        <div id = 'name'>
-            <p > Contest Name </p>
-        </div>
+</div>
         <br>
+        </div>
         <div id = 'Contests'>
             {% for contest in contestre %}
                 <div class = 'item'>
-                    <p>{{contest.contestName}}    </p>
+
+                    <p> {{contest.platform}}
+                    <p>{{contest.contestName}}
+                    <p> <a href = "{{contest.contestLink}}"> Link Here </a>
+                    <p> {{contest.dateTime}} </p>
                     <div class = 'controls'>
-                        <a href = "{% url 'updateItem' contest.id %}"><button class = 'edit'>Change</button></a>
-                        <a href = "{% url 'deleteItem' contest.id %}"><button class = 'delete'>Given</button></a>
+                        <a href = "{% url 'updateItem' contest.id %}"><button class = 'btn btn-secondary' type = 'button'>Change</button></a>
+                        <a href = "{% url 'deleteItem' contest.id %}"><button class = 'btn btn-danger' type = 'button'>Given</button></a>
                     </div>
+
                 </div>
                 {% endfor %}
         </div>
-    </div>
+        <script src="{% static 'css/bootstrap.css' %}"></script>
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
