@@ -8,7 +8,7 @@ colorama==0.4.3
 COVID19Py==0.3.0
 cycler==0.10.0
 distlib==0.3.0
-Django==3.2.5
+Django==3.2.12
 Faker==4.1.1
 filelock==3.0.12
 gunicorn==20.1.0
